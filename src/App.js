@@ -53,6 +53,7 @@ import MotherDietPlan from './screens/MotherDietPlan/motherDietPlan';
 import NutritionistLogin from './screens/signin/NutritionistLogin';
 import NutritionistSignup from './screens/signup/NutritionistSignup';
 import NutritionistHomePage from './screens/nutrtionist/HomeAdminPage';
+import BabyDietPlanRequest from './screens/nutrtionist/babyDietPlanRequest';
 
 
 
@@ -71,6 +72,7 @@ function App() {
       <Route path="/nutritionistSignup"  element={<NutritionistSignup/>} />
       <Route path="/nutritionist_login"  element={<NutritionistLogin/>} />
       <Route path='/home_nutriHome' element={<NutritionistHomePage/>} />
+      <Route path='/babyDietPlanReq' element={<BabyDietPlanRequest/>} />
 
       
       <Route path='/admin_home' element={<AdminHome/>} />

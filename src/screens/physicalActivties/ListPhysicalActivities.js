@@ -11,7 +11,7 @@ const ListPhysicalActivities = () => {
       <nav class={`navbar navbar-expand-lg navbar-light`} id="navbar15">
         <div class="container-fluid">
           <Link class="navbar-brand" href="#">
-            LOGO
+          <img style={{width:"80px", borderRadius:"10px",marginLeft:"35px"}} src={require('../../assets/image/Baby Care.png')}></img>
           </Link>
           <button
             class="navbar-toggler"

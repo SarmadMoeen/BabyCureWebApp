@@ -89,7 +89,7 @@ const NutritionistHomePage = () => {
                   </h5>
                 </div>
                 <div className="text-center mt-3">
-                  <Link to="/postDiyRemediesRecipes" className="btn btn-light w-50">
+                  <Link to="/babyDietPlanReq" className="btn btn-light w-50">
                     More <i class="fa ps-2  fa-arrow-right"></i>{" "}
                   </Link>
                 </div>

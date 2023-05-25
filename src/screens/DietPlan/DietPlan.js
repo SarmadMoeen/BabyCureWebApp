@@ -2,7 +2,32 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import $ from 'jquery'
+import { useState } from 'react';
+import { useEffect } from 'react';
+
 export const DietPlan = () => {
+
+  const [dietPlans, setDietPlans] = useState([]);
+
+
+  useEffect(() => {
+    fetchDietPlans();
+  }, []);
+
+  const fetchDietPlans = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/getDietPlan');
+      const data = await response.json();
+      setDietPlans(data);
+    } catch (error) {
+      console.log('Error fetching diet plans:', error);
+    }
+  };
+  
+
+
+
+
   $(".navbar .nav-link").on("click", function(){
     $(".navbar").find(".activeNav").removeClass("activeNav");
     $(this).addClass("activeNav");
@@ -12,7 +37,7 @@ export const DietPlan = () => {
     <>
         <nav class={`navbar navbar-expand-lg navbar-light `} id="dietNavbar" >
   <div class="container-fluid">
-    <Link class="navbar-brand" href="#">LOGO</Link>
+    <Link class="navbar-brand" href="#"><img style={{width:"80px", borderRadius:"10px",marginLeft:"35px"}} src={require('../../assets/image/Baby Care.png')}></img></Link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -73,10 +98,24 @@ export const DietPlan = () => {
               </div>
                 </div>
                 <div className='col-md-12 pt-5 text-center justify-content-center'>
-                    <div className='p-4 text-white' style={{backgroundColor:'#079AAD',border:'3px solid #000'}} >
-                        <h2>Recommended Diet Plan</h2>
-                        <p className='pt-4'>An infant needs 18 – 32 ounces of breast milk in his first 3 months. You should increase the amount gradually and very slowly so that by the end of 3 months your child is fed with 32 ounces of milk approximately. You should not add any kind of cereal or starchy food item to a baby who is below 3 months of age.If your baby is younger than 12 months of age, no. Breast milk is comprised 87% of water and water is optional before one year of age. If your child is 12 months or older, water is necessary.</p>
+                <div className='p-4 text-white' style={{backgroundColor:'#079AAD',border:'3px solid #000'}} >
+            
+
+                <div className='col-md-12 pt-5 text-center justify-content-center'>
+                  {dietPlans.map((item, index) => (
+                    <div key={index} className='p-4 text-white' style={{ backgroundColor: '#079AAD', border: '3px solid #000' }}>
+                      <h2>{item.title}</h2>
+                      <p className='pt-4'>{item.description}</p>
                     </div>
+                  ))}
+                </div>
+
+
+
+                
+                
+                </div>
+
                 </div>
                 <div  className='col-md-4 mx-auto pt-5 pb-4'>
                     <Link to="/request_customize" style={{backgroundColor:'#0798AB',fontSize:'16px'}} className='btn  py-2 rounded-3 w-100 text-white'>Request for Customize Diet Plan</Link>
